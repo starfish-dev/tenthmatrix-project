@@ -1,0 +1,311 @@
+<% var pageTileStr= "", metaKeywordsStr= "", metaDescriptionStr="";
+if (document_details.PageTitle) {
+pageTileStr= document_details.PageTitle;
+}
+if (document_details.MetaTagKeywords) {
+metaKeywordsStr= document_details.MetaTagKeywords;
+}
+if (document_details.MetaTagDescription) {
+metaDescriptionStr= document_details.MetaTagDescription;
+}
+%>
+<%  include include/main-header %>
+	<% include include/header %>
+	<% include include/banner %>
+
+    <% if(document_details.Type=="blog" || document_details.Type=="news"){
+    	var a = new Date(document_details.created * 1000);
+  		var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  		var year = a.getFullYear();
+  		var month = months[a.getMonth()];
+  		var dateNum = a.getDate();
+  	%>
+		<div id="app" class="page-<%= document_details.Type%> inner-page single-<%= document_details.Type%>-template">
+			<section id="content" class="my-100">
+				<div class="container">
+					<div class="row">
+						<div class="col-12 col-md-8">
+							<div class="content-wrapper mb-5">
+								<h2 class="text-blue-2">
+									<% if (typeof document_details.Title !== 'undefined' && document_details.Title !== null && document_details.Title != "") {
+										document_details.Title;
+									} %>
+								</h2>
+								<hr class="separator blue">
+								<% if(typeof document_details.uploaded_file_uuid !== "undefined" && document_details.uploaded_file_uuid !== null && document_details.uploaded_file_uuid != ""){ %>
+									<img src="/file/<%= document_details.uploaded_file_uuid %>" class="w-100 mb-3" alt="">
+								<% } else if (typeof document_details.image_path !== 'undefined' && document_details.image_path !== null && document_details.image_path != "") { %>
+									<img src="<%= document_details.image_path %>" class="w-100 mb-3" alt="">
+								<% } %>
+								<div class="meta flex-space-between-center mb-3">
+									<p class="date mb-2 text-italic">Posted on: <%= month %> <%= dateNum %>, <%= year %></p>
+									<p class="author mb-2 text-italic"> Author: <a href="javascript:void(0);">Admin</a></p>
+									<% if(document_details.BlogComments && document_details.BlogComments.length>=1) { %>
+										<p class="comments mb-2 text-italic">
+											<i class="fas fa-comment"></i> <%= document_details.BlogComments.length %>
+										</p>
+									<% } %>
+								</div>
+								<div class="content">
+									<%- document_details.Body %>
+								</div>
+							</div>
+							<% if(document_details.BlogComments){ %>
+								<div class="comment-post-list">
+									<h5 class="mb-3">Comments</h5>
+					            	<% if(document_details.BlogComments.length>0){	%>
+					              		<%	var objectArr=document_details.BlogComments;
+										for(var objCount=0; objCount<objectArr.length; objCount++){
+				                			var subObject=objectArr[objCount];
+				                  			if(subObject.status==1) { %>
+												<section class="comment-list">
+													<article class="row">
+														<div class="col-md-2 col-sm-2 hidden-xs">
+															<figure class="thumbnail">
+																<img class="img-fluid" src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png" />
+																<figcaption class="text-center"><%= subObject.name %></figcaption>
+															</figure>
+														</div>
+														<div class="col-md-10 col-sm-10">
+															<div class="panel panel-default arrow left">
+																<div class="panel-body">
+																	<header class="text-left">
+																		<div class="comment-user"><i class="fa fa-user"></i> <%= subObject.name %></div>
+																		<time class="comment-date"><i class="fas fa-clock"></i>
+																			<% if(subObject.modified) {
+													                      		var modifiedDateStr = timeConverter(subObject.modified);	%>
+													                      		<%= modifiedDateStr %>
+													                      	<% } %>
+																	</time>
+																	</header>
+																	<div class="comment-post">
+																		<p>
+																			<%= subObject.comment %>
+																		</p>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</article>
+												</section>
+											<% } %>
+										<% } %>
+									<% } %>
+								</div>
+							<% } %>
+							<% if(document_details.Type=="blog"){	%>
+								<div class="comment-form">
+									<h5 class="mb-3">Post a comment</h5>
+									<form role="form" id="blogComment" name="blogComment" method="post" action="">
+										<div class="row">
+											<input id="blog_uuid" name="blog_uuid" type="hidden" value="<%= document_details._id %>">
+											<div class="col-12 mb-3">
+												<input type="text" name="name" id="name" class="form-control rounded-0" placeholder="Name">
+											</div>
+											<div class="col-12 col-md-6 mb-3">
+												<input type="email" name="email" id="email" class="form-control rounded-0" placeholder="Email">
+											</div>
+											<div class="col-12 col-md-6 mb-3">
+												<input type="text" name="website" id="website" class="form-control rounded-0" placeholder="Website">
+											</div>
+											<div class="col-12 mb-3">
+												<textarea name="comment" id="comment" class="form-control w-100 rounded-0" rows="5" placeholder="Message"></textarea>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-12 text-right">
+												<button class="btn btn-light-blue rounded-0" type="submit">
+													Post Comment
+												</button>
+											</div>
+										</div>
+									</form>
+								</div>
+							<% } %>
+						</div>
+						<div class="col-12 col-md-4">
+							<div class="side-links print_posts">
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+		</div>
+    <% } else{	%>
+    	<% if(typeof document_details.uploaded_file_uuid !== "undefined" && document_details.uploaded_file_uuid !== null && document_details.uploaded_file_uuid != ""){ %>
+					<div class="blog-img">
+            <img src="/file/<%= document_details.uploaded_file_uuid %>" class="img-responsive" alt=""/>
+          </div>
+			<% } else if (typeof document_details.image_path !== "undefined" && document_details.image_path !== null && document_details.image_path != "") { %>
+					<div class="blog-img">
+          	<img src="<%= document_details.image_path %>" class="img-responsive"	 alt=""/>
+          </div>
+				<% } %>
+	  	<%- document_details.Body %>
+	  	<% if(document_details.Code=="our-clients"){ %>
+				<div id="app" class="page-our-clients page-template-gallery">
+					<section id="content" class="my-100">
+						<div class="container">
+							<div class="row clients box-item">
+			  					<% if(document_details.Objects){
+			  						for(var i=0; i<document_details.Objects.length; i++){
+			  							if(document_details.Objects[i].status==1 || document_details.Objects[i].status=="1"){	%>
+									  		<%- document_details.Objects[i].content %>
+			  							<% }
+			  						}
+			  					} %>
+								</div>
+						</div>
+					</section>
+				</div>
+	  	<% }else if(document_details.Code=="projects-undertaken") { %>
+			<div id="app" class="page-our-clients page-template-gallery">
+				<section id="content" class="my-100">
+					<div class="container">
+						<div class="row projects box-item">
+							<% if(document_details.Objects){
+								for(var i=0; i<document_details.Objects.length; i++){
+									if(document_details.Objects[i].status==1 || document_details.Objects[i].status=="1"){	%>
+										<%- document_details.Objects[i].content %>
+									<% }
+								}
+							} %>
+							</div>
+					</div>
+				</section>
+			</div>
+		<% }else if(document_details.Code=="client-testimonials") { %>
+			<div id="app" class="page-our-partners page-template-gallery">
+				<section id="content" class="my-100">
+					<div class="container">
+						<div class="row client-testimonials">
+							<% if(document_details.Objects){
+								for(var i=0; i<document_details.Objects.length; i++){
+									if(document_details.Objects[i].status==1 || document_details.Objects[i].status=="1"){	%>
+										<%- document_details.Objects[i].content %>
+									<% }
+								}
+							} %>
+							</div>
+					</div>
+				</section>
+			</div>
+	  	<% } else {
+	  		if(document_details.Objects){
+	  			for(var i=0; i<document_details.Objects.length; i++){
+	  				if(document_details.Objects[i].status==1 || document_details.Objects[i].status=="1"){	%>
+	  					<h2><%- document_details.Objects[i].name %></h2>
+	  					<%- document_details.Objects[i].content %>
+	  				<% }
+	  			}
+	  		}
+	  	} %>
+		<% }	%>
+
+	<!--footer start-->
+    <% include include/footer %>
+    <!--footer end-->
+
+<% include include/main-footer %>
+<script>
+var typeStr='<%= document_details.Type %>';
+
+$(document).ready(function() {
+	if(typeStr=="news"){
+		load_posts('news');
+	}
+	if(typeStr=="blog"){
+		load_posts('blog');
+	}
+
+	$("#blogComment").validate({
+		rules: {
+			name: "required",
+			email: {
+				required: true,
+				email: true
+			},
+			comment: "required",
+			blog_uuid : "required"
+		},
+		messages: {
+			name: "Please enter your name",
+			email: {
+				required: "Please enter your E-mail",
+				email: "Please enter valid E-mail"
+			},
+			comment: "Please leave your message!",
+			blog_uuid: "Required Field!"
+		},
+		submitHandler: function(form) {
+			$(".alert").remove();
+    		$.ajax({
+				type: "POST",
+				url: "saveblogcomment",
+				headers : { "cache-control": "no-cache" },
+				data: {'blog_uuid' : $("#blog_uuid").val(), 'name' : $("#name").val(), 'email' : $("#email").val(), 'comment' : $("#comment").val(), 'website' : $("#website").val() },
+				dataType: "json",
+				cache: false,
+				success: function(response){
+    				$('#blogComment').trigger("reset");
+					if(response.success){
+						$("#blogComment").before('<div class="alert alert-success">'+response.success+'</div>');
+					}else if(response.error){
+						$("#blogComment").before('<div class="alert alert-danger">'+response.error+'</div>');
+					}
+				}
+			});
+		}
+	});
+});
+function load_posts(e){
+
+	var jsonRow="/search-results?start=1&limit=5";
+	if(e=="blog"){
+		jsonRow+="&type=news";
+	} else {
+		jsonRow+="&type=blog";
+	}
+	xhrStatus=$.getJSON(jsonRow,function(html){
+		if(html.error){
+			$(".print_posts").html('<div class="alert alert-danger">No latest posts found!</div>');
+		}else{
+
+			var contentHtml="";
+			if(e=="blog"){
+				contentHtml+="<h4 class='text-blue-2'>News</h4>";
+			}else{
+				contentHtml+="<h4 class='text-blue-2'>Latest Blog Post</h4>";
+			}
+			contentHtml+="<hr class='separator blue'>";
+			contentHtml+="<div class='wrapper ml-1'>";
+			if(html.aaData && html.aaData.length>0) {
+				$.each(html.aaData, function(i,row){
+					if(row.Code!=""){
+						var defaultImg="images/no-image.png";
+						if(row.uploaded_file_uuid && row.uploaded_file_uuid!=""){
+							defaultImg="/file/"+row.uploaded_file_uuid;
+						}else if(row.image_path && row.image_path!=""){
+							defaultImg=row.image_path;
+						}
+						contentHtml+='<div class="item bg-alice-blue p-3 rounded mb-3">';
+                		contentHtml+='<a href="/'+row.Code+'" title="'+row.Document+'">';
+                  		contentHtml+='<h5 class="mb-1">'+row.Document+'</h5>';
+                    	contentHtml+='<p class="one-line mb-0">'+row.Document+'</p>';
+              			contentHtml+='</div>';
+					}
+				});
+			} else{
+				contentHtml+='<div class="alert alert-danger">No latest posts found!</div>';
+			}
+			contentHtml+="</div>";
+			$(".print_posts").html(contentHtml);
+		}
+	});
+}
+
+</script>
+</body>
+</html>

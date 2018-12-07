@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Bitter Bold';
+    src: url('fonts/bitterbold.eot');
+    src: url('fonts/bitterbold.eot') format('embedded-opentype'),
+         url('fonts/bitterbold.woff2') format('woff2'),
+         url('fonts/bitterbold.woff') format('woff'),
+         url('fonts/bitterbold.ttf') format('truetype'),
+         url('fonts/bitterbold.svg#bitterbold') format('svg');
+}
+
+@font-face {
+    font-family: 'Open Sans Light';
+    src: url('fonts/opensanslight.eot');
+    src: url('fonts/opensanslight.eot') format('embedded-opentype'),
+         url('fonts/opensanslight.woff2') format('woff2'),
+         url('fonts/opensanslight.woff') format('woff'),
+         url('fonts/opensanslight.ttf') format('truetype'),
+         url('fonts/opensanslight.svg#opensanslight') format('svg');
+}

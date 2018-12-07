@@ -1,0 +1,27 @@
+<section id="banner" class="py-3 bg-image" style="background-image: url('img/page-inner-banner.jpg');">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-6">
+				<div class="wrapper">
+					<h1 class="title text-white mb-0 fs-26px"><% if (typeof document_details.Document !== 'undefined' && document_details.Document !== null && document_details.Document != "") { %><%= document_details.Document.toUpperCase() %><% } %></h1>
+				</div>
+			</div>
+			<div class="col-12 col-md-6 breadcrumbs flex-center-end">
+				<div class="wrapper d-flex">
+					<a href="/index">
+						<p class="mb-0 mx-1 one-line text-inherit">
+							Home
+						</p>
+					</a>
+					<p class="mb-0 mx-1 text-white">/</p>
+					<a class="active" href="<% if (typeof document_details.Document !== 'undefined' && document_details.Document !== null && document_details.Document != "") { %><%= '/'+document_details.Code %><% } %>">
+						<p class="mb-0 mx-1 one-line text-inherit">
+							<% if (typeof document_details.Document !== 'undefined' && document_details.Document !== null && document_details.Document != "") { %><%= document_details.Document %><% } %>
+						</p>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

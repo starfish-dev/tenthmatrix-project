@@ -1,0 +1,69 @@
+<header id="masthead" class="site-header bg-white">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<nav class="navbar navbar-expand-lg">
+					<a class="navbar-brand" href="/">
+						<img class="img-fluid" src="img/tenthmatrix-logo.jpg" alt="Tenthmatrix Logo">
+					</a>
+
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navigation" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<i class="fas fa-bars"></i>
+					</button>
+
+					<div class="collapse navbar-collapse pb-4" id="main-navigation">
+						<ul class="navbar-nav mr-auto">
+							<% if (typeof navigation !== 'undefined' && navigation !== null) {
+								for(var tnav=0; tnav<navigation.length; tnav++){
+									if(navigation[tnav].categories=='top-navigation'){
+										if(navigation[tnav].type=="url"){		%>
+											<li class="nav-item"><a class="nav-link" href="<%= navigation[tnav].content %>" title="<%= navigation[tnav].label %>"><%= navigation[tnav].label %></a></li>
+									<%	}else if(navigation[tnav].type=="items"){
+											try{
+												var bookmarkItems = JSON.parse(navigation[tnav].bookmark_items);
+		        							}	catch (error){
+		       									var bookmarkItems = navigation[tnav].bookmark_items;
+		    								}
+											if(bookmarkItems.length>0){	%>
+												<li class="nav-item dropdown">
+													<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%= navigation[tnav].label%></a>
+													 <ul class="dropdown-menu rounded-0">
+										 			<% bookmarkItems.sort(dynamicSort("item_sort_order"));
+										 				for(var count=0; count< bookmarkItems.length; count++){
+										 					if(bookmarkItems[count].type=="url"){  %>
+										 						<li><a class="dropdown-item" href="<%= bookmarkItems[count].content %>" title="<%= bookmarkItems[count].label %>"><%= bookmarkItems[count].label %></a></li>
+										 				<% 	}else if(bookmarkItems[count].type=="html"){  %>
+										 						<%- bookmarkItems[count].content %>
+										 				<%	}
+										 				}	 %>
+										 			</ul>
+												</li>
+											<%	}
+										}
+									}
+								}
+							} %>
+						</ul>
+
+						<ul class="navbar-nav ml-auto">
+							<li class="nav-item">
+								<form class="form-inline my-2 my-lg-0" id="searchForm" method="get" action="search" onsubmit="return $.checkSearchBox();">
+									<button class="btn btn-search" type="submit">
+										<img class="img-fluid" src="img/search.png" alt="search-icon">
+									</button>
+									<input class="form-control border-0 rounded-0" type="search" placeholder="Search" aria-label="Search" name="s" value="" id="csearch">
+								</form>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									<img class="img-fluid" src="img/user.png" alt="customer-icon">
+									Customer Sign In
+								</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</header>

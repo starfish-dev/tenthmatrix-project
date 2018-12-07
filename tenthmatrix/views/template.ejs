@@ -1,0 +1,60 @@
+<%
+var drawTopNav="", drawFooterNav="", pageContentHtml=drawTemplate;
+
+if (typeof navigation !== "undefined" && navigation !== null) {
+	for(var tnav=0; tnav<navigation.length; tnav++){
+		if(navigation[tnav].categories=="top-navigation"){
+			if(navigation[tnav].type=="url"){
+				drawTopNav+=' <li class="nav-item"><a class="nav-link" HREF="'+navigation[tnav].content+'" title="'+navigation[tnav].label+'">'+navigation[tnav].label+'></a></li>';
+			}else if(navigation[tnav].type=="items"){
+				try{
+					var bookmarkItems = JSON.parse(navigation[tnav].bookmark_items);
+        		}	catch (error){
+       				var bookmarkItems = navigation[tnav].bookmark_items;
+    			}
+				if(bookmarkItems.length>0){
+					drawTopNav+='<li class="dropdown nav-item">';
+					drawTopNav+='<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+navigation[tnav].label+' </a>';
+					drawTopNav+='<ul class="dropdown-menu rounded-0">';
+					bookmarkItems.sort(dynamicSort("item_sort_order"));
+					for(var count=0; count< bookmarkItems.length; count++){
+						if(bookmarkItems[count].type=="url"){
+							drawTopNav+='<li><a class="dropdown-item" href="'+bookmarkItems[count].content+'" title="'+bookmarkItems[count].label+'">'+bookmarkItems[count].label+'</a></li>';
+						}else if(bookmarkItems[count].type=="html"){
+							drawTopNav+=bookmarkItems[count].content;
+						}
+					}
+					drawTopNav+='</ul>';
+					drawTopNav+='</li>';
+				}
+			}
+		} else if(navigation[tnav].categories=="footer-nav"){
+			drawFooterNav+='<div class="col-12 col-sm-6 col-md">';
+			try{
+				var bookmarkItems = JSON.parse(navigation[tnav].bookmark_items);
+			}	catch (error){
+				var bookmarkItems = navigation[tnav].bookmark_items;
+			}
+			if(bookmarkItems.length>0){
+				drawFooterNav+='<h3 class="text-light-blue">'+navigation[tnav].label+'</h3>';
+				drawFooterNav+='<div class="wrapper d-grid">';
+				bookmarkItems.sort(dynamicSort("item_sort_order"));
+				for(var count=0; count< bookmarkItems.length; count++){
+					if(bookmarkItems[count].type=="url"){
+						drawFooterNav+='<a href="'+bookmarkItems[count].content+'" title="'+bookmarkItems[count].label+'">'+bookmarkItems[count].label+'</a>';
+					}else if(bookmarkItems[count].type=="html"){
+						drawFooterNav+='<a>'+ bookmarkItems[count].content+'</a>';
+					}
+				}
+				drawFooterNav+='</div>';
+			}
+			drawFooterNav+='</div>';
+		}
+	}
+}
+
+pageContentHtml = pageContentHtml.replace("__headerbookmark__", drawTopNav);
+pageContentHtml = pageContentHtml.replace("__footerbookmark__", drawFooterNav);
+%>
+
+<%- pageContentHtml %>

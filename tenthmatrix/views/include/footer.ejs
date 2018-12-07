@@ -1,0 +1,99 @@
+<footer id="colophon" class="site-footer">
+	<div id="quick-links" class="py-5 bg-light bg-image">
+		<div class="bg-circle left"></div>
+		<div class="bg-circle right"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="wrapper">
+						<h2 class="text-blue-2">Quick Links</h2>
+						<hr class="separator blue">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<% if (typeof navigation !== 'undefined' && navigation !== null) {
+					for(var tnav=0; tnav<navigation.length; tnav++){ %>
+						<% if(navigation[tnav].categories=='footer-nav'){ %>
+							<div class="col-12 col-sm-6 col-md">
+							<% try{
+								var bookmarkItems = JSON.parse(navigation[tnav].bookmark_items);
+							}	catch (error){
+									var bookmarkItems = navigation[tnav].bookmark_items;
+							}
+							if(bookmarkItems.length>0){	%>
+								<h3 class="text-light-blue"><%= navigation[tnav].label %></h3>
+								<div class="wrapper d-grid">
+									<% bookmarkItems.sort(dynamicSort("item_sort_order"));
+										for (var count=0; count< bookmarkItems.length; count++) {
+											if (bookmarkItems[count].type=="url") {  %>
+												<a href="<%= bookmarkItems[count].content %>" title="<%= bookmarkItems[count].label %>"><%= bookmarkItems[count].label %></a>
+										<% } else if(bookmarkItems[count].type=="html") {  %>
+												<a><%- bookmarkItems[count].content %></a>
+										<%	}
+										}	%>
+								</div>
+							<% } %>
+							</div>
+						<% } %>
+					<% }
+				} %>
+			</div>
+		</div>
+	</div>
+	<div id="copy-and-social-links" class="my-5">
+		<div class="container">
+			<div class="row social-links mb-3">
+				<div class="col-12">
+					<div class="wrapper text-center">
+						<!-- <a href="#" class="bg-dark-blue rounded-circle">
+							<i class="fab fa-instagram"></i>
+						</a> -->
+						<a href="https://www.facebook.com/Tenthmatrix-229638843781330/" class="bg-dark-blue rounded-circle" target="_blank">
+							<i class="fab fa-facebook-f"></i>
+						</a>
+						<a href="https://plus.google.com/u/0/+BalinderWalia" class="bg-dark-blue rounded-circle" target="_blank">
+							<i class="fab fa-google-plus-g"></i>
+						</a>
+						<a href="https://www.linkedin.com/in/bwalia" class="bg-dark-blue rounded-circle" target="_blank">
+							<i class="fab fa-linkedin-in"></i>
+						</a>
+						<a href="http://twitter.com/Tenthmatrix" class="bg-dark-blue rounded-circle" target="_blank">
+							<i class="fab fa-twitter"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="row contact mb-3">
+				<div class="col-12 col-md-6">
+					<p class="text-dark-blue mb-0 text-right">
+						<i class="fas fa-envelope"></i>
+						<a href="mailto:info@tenthmatrix.co.uk">
+							info@tenthmatrix.co.uk
+						</a>
+					</p>
+				</div>
+				<div class="col-12 col-md-6">
+					<p class="text-dark-blue mb-0">
+						<i class="fas fa-phone"></i>
+						<a href="tel:01442255285">
+							01442 255 285
+						</a>
+					</p>
+				</div>
+			</div>
+			<div class="row copy mb-3">
+				<div class="col-12 col-md-7">
+					<p class="text-right text-dark-blue mb-0">Copyright 2017 - All rights reserved. Tenthmatrix Information Systems Ltd.</p>
+				</div>
+				<div class="col-12 col-md-5">
+					<div class="wrapper">
+						<a href="/privacy-policy">Privacy Policy |</a>
+						<a href="/terms-of-business">Terms of Business |</a>
+						<a href="/sitemap">Sitemap</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
