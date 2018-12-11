@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<title>Tenthmatrix</title>
+		<link rel="shortcut icon" type="image/png" href="img/favicon.png"/>
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.slick/1.5.1/slick-theme.css"/>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" />
+		<link rel="stylesheet" href="css/font.css"/>
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		
+		<div id="app" class="page-support inner-page page-template-support">
+
+			<header id="masthead" class="site-header bg-white">
+				<div class="container">
+					<div class="row">
+						<div class="col-12">
+							<nav class="navbar navbar-expand-lg">
+								<a class="navbar-brand" href="#">
+									<img class="img-fluid" src="img/tenthmatrix-logo.jpg" alt="Tenthmatrix Logo">
+								</a>
+
+								<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navigation" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+									<i class="fas fa-bars"></i>
+								</button>
+
+								<div class="collapse navbar-collapse pb-4" id="main-navigation">
+									<ul class="navbar-nav mr-auto">
+										<li class="nav-item">
+											<a class="nav-link" href="#">About Us</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#">Products</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#">Services</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#">Community</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#">Contact Us</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#">Payment</a>
+										</li>
+									</ul>
+
+									<ul class="navbar-nav ml-auto">
+										<li class="nav-item">
+											<form class="form-inline my-2 my-lg-0">
+												<button class="btn btn-search" type="submit">
+													<img class="img-fluid" src="img/search.png" alt="search-icon">
+												</button>
+												<input class="form-control border-0 rounded-0" type="search" placeholder="Search" aria-label="Search">
+											</form>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="#">
+												<img class="img-fluid" src="img/user.png" alt="customer-icon">
+												Customer Sign In
+											</a>
+										</li>
+									</ul>
+								</div>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</header>
+			
+			<!-- Site Content -->
+
+			<section id="banner" class="py-3 bg-image" style="background-image: url('img/page-inner-banner.jpg');">
+				<div class="overlay"></div>
+				<div class="container">
+					<div class="row">
+						<div class="col-12 col-md-6">
+							<div class="wrapper">
+								<h1 class="title text-white mb-0">Make Payment</h1>
+							</div>
+						</div>
+						<div class="col-12 col-md-6 breadcrumbs flex-center-end">
+							<div class="wrapper">
+								<a href="#">Home</a> / 
+								<a class="active" href="#">Make Payment</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="content" class="my-100">
+				<div class="container">
+					<div class="row mb-5">
+						<div class="col-12">
+							<div class="header">
+								<h2 class="text-blue-2">Pay an invoice with your credit or debit card securely</h2>
+								<p>
+									<em>Note: We do not store your personal data or credit card information.</em>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 col-md-8 make-payment-form">
+							<form action="#" method="post">
+								<div class="row">
+									<div class="col-12 mb-3">
+										<input type="number" name="pi-invoice-no" class="form-control rounded-0" id="pi-invoice-no" placeholder="Invoice No.">
+									</div>
+									<div class="col-12 mb-3">
+										<input type="number" name="pi-invoice-pin" class="form-control rounded-0" id="pi-invoice-pin" placeholder="Invoice PIN">
+									</div>
+									<div class="col-12 mb-3">
+										<input type="text" name="pi-name" class="form-control rounded-0" id="pi-name" placeholder="Name">
+										<p class="mb-0">
+											<em>* Payment PIN can be found on the Invoice itself.</em>
+										</p>
+									</div>
+									<div class="col-12 mb-3">
+										<input type="email" name="pi-email" class="form-control rounded-0" id="pi-email" placeholder="Email">
+									</div>
+									<div class="col-12 mb-3">
+										<input type="number" name="pi-amount" class="form-control rounded-0" id="pi-amount" placeholder="Amount (€)">
+										<p class="mb-0">
+											<em>* Payments to be made in GPB(€) unless stated otherwise on the invoice.</em>
+										</p>
+									</div>
+									<div class="col-12 mb-3">
+										<textarea class="form-control rounded-0"  name="pi-notes" id="pi-notes" rows="8" placeholder="Notes"></textarea>
+									</div>
+									<div class="col-12 mb-3">
+										<button class="btn btn-light-blue rounded-0" type="submit">
+											Continue to enter Credit Card details
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="col-12 col-md-4 make-payment contact-details">
+							<div class="wrapper mb-3">
+								<h5 class="text-blue-2">Company Details</h5>
+								<hr class="separator blue mb-2">
+								<p class="mb-0">
+									Tenthmatrix Information System Ltd Registered in England and Wales. Registered Company No 06597469. VAT No GB 972 9855 56.
+								</p>
+							</div>
+							<div class="wrapper mb-3">
+								<h5 class="text-blue-2">Address</h5>
+								<hr class="separator blue mb-2">
+								<p class="mb-0">
+									Tenthmatrix Information System Ltd Registered in England and Wales. Registered Company No 06597469. VAT No GB 972 9855 56.
+								</p>
+							</div>
+							<div class="wrapper mb-3">
+								<h5 class="text-blue-2">Billing Contact</h5>
+								<hr class="separator blue mb-2">
+								<p class="mb-0">Phone: 0207 118 7889</p>
+								<p class="mb-0">Name: Laura New</p>
+								<p class="mb-0">Email: billing@tenthmatrix.co.uk</p>
+							</div>
+							<div class="wrapper mb-3">
+								<h5 class="text-blue-2">Billing FAQ</h5>
+								<hr class="separator blue mb-2">
+								<p class="mb-0">
+									<a href="#">Refund Policy</a>
+								</p>
+								<p class="mb-0">
+									<a href="#">Follow us on Twitter</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- End Content -->
+
+			<footer id="colophon" class="site-footer">
+				<div id="quick-links" class="py-5 bg-light bg-image">
+					<div class="bg-circle left"></div>
+					<div class="bg-circle right"></div>
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+								<div class="wrapper">
+									<h2 class="text-blue-2">Quick Links</h2>
+									<hr class="separator blue">
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12 col-sm-6 col-md">
+								<h3 class="text-light-blue">About</h3>
+								<div class="wrapper d-grid">
+									<a href="#">Company</a>
+									<a href="#">Our Client</a>
+									<a href="#">Key People</a>
+									<a href="#">Our Partners</a>
+									<a href="#">Careers</a>
+								</div>
+							</div>
+							<div class="col-12 col-sm-6 col-md">
+								<h3 class="text-light-blue">Products</h3>
+								<div class="wrapper d-grid">
+									<a href="#">Company</a>
+									<a href="#">Our Client</a>
+									<a href="#">Key People</a>
+								</div>
+							</div>
+							<div class="col-12 col-sm-6 col-md">
+								<h3 class="text-light-blue">Services</h3>
+								<div class="wrapper d-grid">
+									<a href="#">Company</a>
+									<a href="#">Our Client</a>
+									<a href="#">Key People</a>
+									<a href="#">Our Partners</a>
+									<a href="#">Careers</a>
+									<a href="#">Careers</a>
+								</div>
+							</div>
+							<div class="col-12 col-sm-6 col-md">
+								<h3 class="text-light-blue">Community</h3>
+								<div class="wrapper d-grid">
+									<a href="#">Company</a>
+									<a href="#">Our Client</a>
+								</div>
+							</div>
+							<div class="col-12 col-sm-6 col-md">
+								<h3 class="text-light-blue">Our Network Sites</h3>
+								<div class="wrapper d-grid">
+									<a href="#">Company</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="copy-and-social-links" class="my-5">
+					<div class="container">
+						<div class="row social-links mb-3">
+							<div class="col-12">
+								<div class="wrapper text-center">
+									<a href="#" class="bg-dark-blue rounded-circle">
+										<i class="fab fa-instagram"></i>
+									</a>
+									<a href="#" class="bg-dark-blue rounded-circle">
+										<i class="fab fa-facebook-f"></i>
+									</a>
+									<a href="#" class="bg-dark-blue rounded-circle">
+										<i class="fab fa-linkedin-in"></i>
+									</a>
+									<a href="#" class="bg-dark-blue rounded-circle">
+										<i class="fab fa-twitter"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="row contact mb-3">
+							<div class="col-12 col-md-6">
+								<p class="text-dark-blue mb-0 text-right">
+									<i class="fas fa-envelope"></i>
+									<a href="mailto:info@tenthmatrix.co.uk">
+										info@tenthmatrix.co.uk
+									</a> 
+								</p>
+							</div>
+							<div class="col-12 col-md-6">
+								<p class="text-dark-blue mb-0">
+									<i class="fas fa-phone"></i>
+									<a href="tel:01442255285">
+										01442 255 285
+									</a>
+								</p>
+							</div>
+						</div>
+						<div class="row copy mb-3">
+							<div class="col-12 col-md-7">
+								<p class="text-right text-dark-blue mb-0">Copyright 2017 - All rights reserved. Tenthmatrix Information Systems Ltd.</p>
+							</div>
+							<div class="col-12 col-md-5">
+								<div class="wrapper">
+									<a href="#">Privacy Policy |</a>
+									<a href="#">Terms of Business |</a>
+									<a href="#">Sitemap</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.js"></script>
+		<script src="js/script.js"></script>
+	</body>
+</html>
