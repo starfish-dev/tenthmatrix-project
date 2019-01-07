@@ -5,7 +5,7 @@ if (typeof navigation !== "undefined" && navigation !== null) {
 	for(var tnav=0; tnav<navigation.length; tnav++){
 		if(navigation[tnav].categories=="top-navigation"){
 			if(navigation[tnav].type=="url"){
-				drawTopNav+=' <li class="nav-item"><a class="nav-link" HREF="'+navigation[tnav].content+'" title="'+navigation[tnav].label+'">'+navigation[tnav].label+'></a></li>';
+				drawTopNav+=' <li class="nav-item"><a class="nav-link" HREF="'+navigation[tnav].content+'" title="'+navigation[tnav].label+'">'+navigation[tnav].label+'</a></li>';
 			}else if(navigation[tnav].type=="items"){
 				try{
 					var bookmarkItems = JSON.parse(navigation[tnav].bookmark_items);

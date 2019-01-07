@@ -101,7 +101,6 @@ jQuery(document).ready(function($) {
   	var itemsPerPage=pageSize;
   	var paginationHtml='';
   	var tpages = Math.ceil(total_count/itemsPerPage);
-    console.log(total_count);
   	if(tpages<=0){
   		tpages=1;
   	}
@@ -113,11 +112,11 @@ jQuery(document).ready(function($) {
     paginationHtml+= '<div class="wrapper">';
 
   	if (currentPageNum == 1) {
-  		paginationHtml+= '<a class="prev" href="javascript:void(0)">';
+  		paginationHtml+= '<a class="prev" href="javascript:void(0)" style="color:#70d4e8;">';
       paginationHtml+= '<i class="fas fa-chevron-left"></i>';
 			paginationHtml+= '</a>';
     } else if (currentPageNum == 2) {
-      paginationHtml+= '<a class="prev" href="javascript:void(0)" href="'+currentLink+'">';
+      paginationHtml+= '<a class="prev" href="'+currentLink+'">';
       paginationHtml+= '<i class="fas fa-chevron-left"></i>';
 			paginationHtml+= '</a>';
     } else {
@@ -144,7 +143,7 @@ jQuery(document).ready(function($) {
     paginationHtml+= '<div class="numbers">';
   	for (var i=pmin; i <= pmax; i++) {
       	if (i == currentPageNum) {
-          	paginationHtml+= '<a href="javascript:void(0)" >'+i+'</a>';
+          	paginationHtml+= '<a href="javascript:void(0)" style="color:#70d4e8;" >'+i+'</a>';
           } else if (i == 1) {
           	paginationHtml+= '<a href="'+currentLink+'" >'+i+'</a>';
           } else {
@@ -180,7 +179,7 @@ jQuery(document).ready(function($) {
         paginationHtml+= '<i class="fas fa-chevron-right"></i>';
   		paginationHtml+= '</a>';
       } else {
-        paginationHtml+= '<a class="next" href="javascript:void(0)">';
+        paginationHtml+= '<a class="next" href="javascript:void(0)" style="color:#70d4e8;">';
         paginationHtml+= '<i class="fas fa-chevron-right"></i>';
   			paginationHtml+= '</a>';
       }
